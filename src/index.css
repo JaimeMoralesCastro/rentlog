@@ -1,0 +1,212 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Sistema editorial — ver DESIGN.md. Blanco dominante, tinta #0A0A0A, un solo
+   acento rojo, sin sombras, sin radios, jerarquía por escala y vacío. */
+
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html {
+    -webkit-tap-highlight-color: transparent;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #FFFFFF;
+    color: #0A0A0A;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    overscroll-behavior: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    min-height: 100vh;
+    /* El hero full-bleed usa 100vw; clip evita que la barra de scroll provoque
+       desborde horizontal (clip no crea contenedor de scroll, overflow sí). */
+    overflow-x: clip;
+  }
+
+  /* Sin sombras en ninguna parte (DESIGN.md §1). */
+  * { box-shadow: none; }
+
+  h1, h2, h3 { text-wrap: balance; }
+  p { text-wrap: pretty; }
+
+  .tabular, [data-tabular] { font-variant-numeric: tabular-nums; font-feature-settings: 'tnum' on, 'lnum' on; }
+
+  /* Foco: outline (no shadow). El acento aquí es estado funcional, no decoración. */
+  :focus-visible {
+    outline: 2px solid #FF4D00;
+    outline-offset: 2px;
+  }
+  ::selection { background-color: #FF4D00; color: #0A0A0A; }
+
+  /* Movimiento sobrio: 200–400ms ease-out. Sin escalado ni sombras. */
+  button, a {
+    transition: color 240ms cubic-bezier(0.16, 1, 0.3, 1),
+                background-color 240ms cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 240ms cubic-bezier(0.16, 1, 0.3, 1),
+                transform 240ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  input, textarea {
+    transition: border-color 240ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  input::placeholder, textarea::placeholder { color: #0A0A0A; opacity: 0.45; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer utilities {
+  /* ── Retícula: 12 col, max 1280, margen lateral ≥64px en escritorio ── */
+  .page {
+    width: 100%;
+    max-width: 1280px;
+    margin-inline: auto;
+    padding-inline: 24px;
+  }
+  @media (min-width: 1024px) {
+    .page { padding-inline: 64px; }
+  }
+  .full-bleed {
+    width: 100vw;
+    margin-left: 50%;
+    transform: translateX(-50%);
+  }
+
+  /* ── Tipografía de rol ── */
+  /* Serif: eje óptico al máximo = corte display, alto contraste. Sin él,
+     Fraunces sale con contraste de texto y pierde la autoridad del titular. */
+  .font-display, .pull {
+    font-variation-settings: 'opsz' 144;
+  }
+
+  /* Etiqueta grotesca en mayúscula: nav, labels, microtexto. */
+  .text-eyebrow, .label {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 12px;
+    line-height: 1.2;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: #0A0A0A;
+  }
+  /* Sello de sección: uno de los tres usos permitidos del acento. Máx. 1 por
+     vista. Vive SOBRE EL HERO NEGRO (5.95:1); en blanco no llegaría a 4.5:1. */
+  .seal {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: #FF4D00;
+  }
+  /* Frase destacada en serif, caja baja, con comillas angulares. */
+  .pull {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 400;
+    letter-spacing: -0.015em;
+  }
+  .pull::before { content: '«'; }
+  .pull::after  { content: '»'; }
+
+  /* ── Hairlines: 1px #E6E6E6, solo si el vacío no basta ── */
+  .hair-top    { border-top: 1px solid #E6E6E6; }
+  .hair-bottom { border-bottom: 1px solid #E6E6E6; }
+  .rule        { height: 1px; background: #E6E6E6; border: 0; }
+
+  /* ── Enlaces: texto desnudo; subrayado solo en hover, offset 3px ── */
+  .sublink {
+    color: #0A0A0A;
+    text-decoration: none;
+    text-underline-offset: 3px;
+  }
+  .sublink:hover { text-decoration: underline; text-decoration-thickness: 1px; }
+
+  /* Enlace de navegación sobre negro: sin cápsula, sin fondo activo. */
+  .navlink {
+    color: #FFFFFF;
+    text-decoration: none;
+    text-underline-offset: 3px;
+  }
+  .navlink:hover { text-decoration: underline; text-decoration-thickness: 1px; }
+  .navlink[aria-current='page'] { text-decoration: underline; text-decoration-thickness: 1px; }
+
+  /* ── CTA primario: máximo uno por pantalla ──
+     Tinta sobre naranja (5.95:1). En blanco daría 3.33 y no pasaría AA. */
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #FF4D00;
+    color: #0A0A0A;
+    padding: 16px 32px;
+    border: 0;
+    border-radius: 0;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .cta:hover { background: #FF6B00; }
+  .cta:disabled { opacity: 0.4; }
+
+  /* Acción secundaria: texto desnudo en grotesca mayúscula. */
+  .action {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #0A0A0A;
+    background: none;
+    border: 0;
+    padding: 0;
+    text-underline-offset: 3px;
+  }
+  .action:hover { text-decoration: underline; text-decoration-thickness: 1px; }
+  .action:disabled { opacity: 0.4; }
+
+  /* Campo de formulario: sin caja; una regla inferior. */
+  .field {
+    width: 100%;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid #E6E6E6;
+    border-radius: 0;
+    padding: 8px 0;
+    font-size: 16px;
+    color: #0A0A0A;
+  }
+  .field:focus {
+    outline: none;
+    border-bottom-color: #0A0A0A;
+  }
+  .field:focus-visible { outline: none; }
+
+  /* ── Movimiento ── */
+  /* El reveal realza un estado ya visible: nunca oculta contenido por defecto. */
+  .stagger { animation: slideUp 320ms cubic-bezier(0.16, 1, 0.3, 1) both; animation-delay: calc(var(--i, 0) * 40ms); }
+
+  .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+  .min-h-dvh { min-height: 100dvh; }
+
+  /* Compat: los componentes antiguos aún piden estas clases. Ahora son planas. */
+  .glass, .glass-card { background-color: #FFFFFF; }
+  .lift { transition: transform 240ms cubic-bezier(0.16, 1, 0.3, 1); }
+  @media (hover: hover) and (pointer: fine) {
+    .lift:hover { transform: translateY(-2px); }
+  }
+  .shimmer-bg { background: #F2F2F2; }
+}
