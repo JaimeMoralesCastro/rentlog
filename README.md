@@ -21,6 +21,22 @@ enforced in the database, not in the front end.
 
 ---
 
+<div align="center">
+  <img src="docs/screenshots/dashboard.jpg" alt="Rentlog dashboard with net profit, occupancy, ADR and the suggested nightly rate" width="100%">
+  <em>Dashboard — net profit for the month, hotel KPIs and the Smart Rate suggestion.</em>
+</div>
+
+<table>
+<tr>
+<td width="50%"><img src="docs/screenshots/finanzas.jpg" alt="Spanish tax report view"><br><sub><b>Finances</b> — deductible expenses and the Spanish IRPF report.</sub></td>
+<td width="50%"><img src="docs/screenshots/smart-rate.jpg" alt="Smart Rate calendar with a suggested price per night"><br><sub><b>Smart Rate</b> — suggested price per night against real occupancy.</sub></td>
+</tr>
+<tr>
+<td width="50%"><img src="docs/screenshots/propiedades.jpg" alt="Property list with per-property KPIs"><br><sub><b>Properties</b> — net profit, occupancy and ADR per flat.</sub></td>
+<td width="50%" valign="top"><br><sub>Screenshots taken in <b>demo mode</b>, the state you get by cloning and running <code>npm run dev</code> without any configuration. The data is sample data.</sub></td>
+</tr>
+</table>
+
 ## What it does
 
 Hosts running one to five flats usually track money in a spreadsheet and guess

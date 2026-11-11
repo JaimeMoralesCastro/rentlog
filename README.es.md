@@ -21,6 +21,22 @@ seguridad en la base de datos y no en el front.
 
 ---
 
+<div align="center">
+  <img src="docs/screenshots/dashboard.jpg" alt="Panel de Rentlog con beneficio neto, ocupación, ADR y tarifa sugerida" width="100%">
+  <em>Dashboard — beneficio neto del mes, KPIs hoteleros y la tarifa sugerida.</em>
+</div>
+
+<table>
+<tr>
+<td width="50%"><img src="docs/screenshots/finanzas.jpg" alt="Vista de informe fiscal"><br><sub><b>Finanzas</b> — gastos deducibles e informe de IRPF.</sub></td>
+<td width="50%"><img src="docs/screenshots/smart-rate.jpg" alt="Calendario de Smart Rate con precio sugerido por noche"><br><sub><b>Smart Rate</b> — precio sugerido por noche frente a la ocupación real.</sub></td>
+</tr>
+<tr>
+<td width="50%"><img src="docs/screenshots/propiedades.jpg" alt="Listado de propiedades con KPIs por piso"><br><sub><b>Propiedades</b> — beneficio neto, ocupación y ADR por piso.</sub></td>
+<td width="50%" valign="top"><br><sub>Capturas en <b>modo demo</b>, que es lo que sale al clonar y ejecutar <code>npm run dev</code> sin configurar nada. Los datos son de ejemplo.</sub></td>
+</tr>
+</table>
+
 ## Qué hace
 
 Un anfitrión con uno o cinco pisos lleva las cuentas en una hoja de cálculo y
