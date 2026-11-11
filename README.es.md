@@ -133,6 +133,20 @@ Rate v2 e informe fiscal— está parcialmente hecha. La fase 3 es la integraci�
 de canales y la automatización; ver
 [`docs/channel-integration-plan.es.md`](docs/channel-integration-plan.es.md).
 
+## Por qué este proyecto
+
+Debajo del panel esto es un pequeño sistema de revenue management. Ocupación,
+ADR y RevPAR son el vocabulario con el que decide un hotel, y la ocupación de
+equilibrio convierte un coste fijo en el único número que dice si el mes sale.
+Smart Rate cierra el círculo: no informa del pasado, propone un precio para una
+noche concreta.
+
+Eso es lo que me interesa de construirlo: no las gráficas, sino la **regla de
+operación de debajo** —con esta demanda, estos costes y este calendario, qué
+debería hacer el anfitrión esta noche—. Es la misma forma de problema que fijar
+un nivel de servicio o un punto de pedido, que es hacia donde quiero llevar
+esto: **logística empresarial e industrial**, operaciones y planificación.
+
 ## Licencia
 
 [MIT](LICENSE) © Jaime Morales Castro

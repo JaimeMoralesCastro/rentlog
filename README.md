@@ -130,6 +130,20 @@ Phase 2 — advanced multi-property, demand forecasting, Smart Rate v2 and the
 tax report — is partially in place. Phase 3 is channel integration and
 automation; see [`docs/channel-integration-plan.es.md`](docs/channel-integration-plan.es.md).
 
+## Why this project
+
+Behind the dashboard this is a small revenue-management system. Occupancy, ADR
+and RevPAR are the vocabulary hotels use to decide, and break-even occupancy
+turns a fixed cost into the one number that says whether a month works. Smart
+Rate closes the loop: it does not report the past, it proposes a price for a
+specific night.
+
+That is what interests me about building it — not the charts, but the
+**operating rule underneath**: given this demand, this cost base and this
+calendar, what should the host actually do tonight. The same shape of problem
+as setting a service level or a reorder point, which is the direction I want
+to take this: **business and industrial logistics**, operations and planning.
+
 ## License
 
 [MIT](LICENSE) © Jaime Morales Castro
